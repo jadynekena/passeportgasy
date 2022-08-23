@@ -1,0 +1,48 @@
+body {
+	height: 99.5vh;
+	margin: 15px;
+	font-family: 'Arial';
+	text-align: center;
+}
+
+footer {
+	position: fixed;
+	bottom: 5px;
+	text-align: center;
+	width: 100%;
+}
+
+iframe {
+	max-width: 60vw;
+	height: 75%;
+	border: 0;
+	border-radius: 15px;
+	background-color: #f7f7f7;
+	width: 100%;
+}
+
+ul {
+	display: inline-grid;
+	grid-auto-flow: column;
+	list-style: none;
+	padding: 0;
+	grid-gap: 3px;
+}
+
+li {
+	display: flex;
+}
+
+label {
+	padding: 15px;
+	cursor: pointer;
+	border-radius: 15px;
+}
+
+.hidden {
+	display: none;
+}
+
+label:hover, input:checked ~ label {
+	background-color: #f7f7f7;
+}
