@@ -10,7 +10,7 @@ const URLs = {
 
 }
 
-const baseURLdetails = "https://docs.google.com/spreadsheets/d/1PJk3cYbyaubFcl4aRdcFmy0TpeDKl6ms/pubhtml?gid=#gid&widget=false&headers=false&chrome=false&range="
+const baseURLdetails = "https://docs.google.com/spreadsheets/d/1PJk3cYbyaubFcl4aRdcFmy0TpeDKl6ms/pubhtml?gid=#gid&widget=false&headers=false&chrome=false"//+"&range="
 const firstCell = 'B1'
 const detailsURLs = {
 	africa : {gid: '1611475413', range: firstCell+":J26"},
@@ -52,7 +52,7 @@ function applySrc(idInput){
 
 	const detailsFrame = document.querySelector('#details')
 	if(srcDetails){
-		const urlDetails = baseURLdetails.replace('#gid',srcDetails.gid) + srcDetails.range 
+		const urlDetails = baseURLdetails.replace('#gid',srcDetails.gid) //+ srcDetails.range 
 		//console.log({urlDetails})
 		detailsFrame.src = urlDetails
 		detailsFrame.className = detailsFrame.className.replaceAll('hidden','')
