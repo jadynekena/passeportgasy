@@ -9,6 +9,9 @@ nav {
 	margin-bottom: 15px;
 	background-color: #e1e1e1;
 }
+nav ul {
+  margin: 0 15px;
+}
 
 footer {
 	text-align: center;
@@ -30,7 +33,7 @@ footer {
 
 iframe {
 	max-width: 60vw;
-	min-width: 450px;
+	min-width: 300px;
 	border: 0;
 	width: 100%;
 	margin-bottom: 25px;
@@ -50,11 +53,11 @@ iframe {
 }
 
 ul {
-	display: inline-grid;
-	grid-auto-flow: column;
+	display: inline-flex;
 	list-style: none;
 	padding: 0;
 	grid-gap: 3px;
+	flex-wrap: wrap;
 }
 
 li {
