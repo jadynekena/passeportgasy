@@ -1,24 +1,52 @@
 body {
 	height: 99.5vh;
-	margin: 15px;
+	margin: 15px 0;
 	font-family: 'Arial';
 	text-align: center;
 }
 
+nav {
+	margin-bottom: 15px;
+	background-color: #e1e1e1;
+}
+
 footer {
-	position: fixed;
-	bottom: 5px;
 	text-align: center;
 	width: 100%;
+	padding: 15px 0;
+	position: fixed;
+	bottom: 0;
+	color: grey;
+}
+
+.wrapflex {
+	display: flex;
+	align-items: center;
+	grid-gap: 15px;
+	margin: 0 15px;
+	justify-content: center;
+	flex-wrap: wrap;
 }
 
 iframe {
 	max-width: 60vw;
-	height: 75%;
+	min-width: 450px;
 	border: 0;
-	border-radius: 15px;
-	background-color: #f7f7f7;
 	width: 100%;
+	margin-bottom: 25px;
+	box-shadow: 0 0 10px 1px #c6c6c6;
+	border-radius: 15px;
+}
+
+.smallframe {
+	height: 300px;
+	width: 500px;
+	margin-bottom: 150px;
+}
+
+.mediumframe {
+	height: 550px;
+	padding: 15px;
 }
 
 ul {
@@ -43,6 +71,16 @@ label {
 	display: none;
 }
 
+.flag {
+    width: 30px;
+    padding-left: 15px;
+}
+
 label:hover, input:checked ~ label {
-	background-color: #f7f7f7;
+	background-color: white;
+	
+}
+
+input:checked ~ label {
+	border: 3px inset #ececec;
 }

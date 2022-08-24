@@ -2,42 +2,78 @@
 <html>
 <head>
 	<title>Malagasy Passport | Destinations</title>
+	<meta name="description" content="Use this free website to decide where to go on holidays with your Malagasy Passport.">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
 	<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 	<link href="style.css" rel="stylesheet">
 
+
 </head>
 <body>
-	<h1>Where to go with your Malagasy Passport ? 🇲🇬</h1>
+	<h1>Where to go with your Malagasy Passport ?<img class="flag" alt="Madagascar flag" src="./favicon.png"></h1>
 	<nav>
+		<ul>
+			
+			<li>			
+				<input type="radio" class="hidden" value="africa" id="africa" name="tab">
+				<label for="africa">
+					Countries <strong>in Africa</strong>					
+				</label>
+			</li>
+
+			
+			<li>			
+				<input type="radio" class="hidden" value="asia" id="asia" name="tab">
+				<label for="asia">
+					Countries <strong>in Asia</strong>
+				</label>
+			</li>
+
+			
+			<li>			
+				<input type="radio" class="hidden" value="america" id="america" name="tab">
+				<label for="america">
+					Countries <strong>in America</strong>
+				</label>
+			</li>
+
+			
+			<li>			
+				<input type="radio" class="hidden" value="oceania" id="oceania" name="tab">
+				<label for="oceania">
+					Countries <strong>in Oceania</strong>
+				</label>
+			</li>
+			<li>
+				<input type="radio" class="hidden" value="raw" id="raw" name="tab" checked>
+				<label for="raw"><strong>All countries</strong></label>
+
+			</li>
+
+		</ul>
 		<ul>
 
 			<li>
-				<input type="radio" class="hidden" value="raw" id="raw" name="tab" checked>
-				<label for="raw">Raw datas</label>
-
-			</li>
-			
-			<!--
-			<li>
-				<input type="radio" class="hidden" value="stay" id="stay" name="tab" >
-				<label for="stay">Max duration of stay</label>
+				<input type="radio" class="hidden" value="countries" id="countries" name="tab" >
+				<label for="countries">Number of countries <strong>per continent</strong></label>
 			</li>
 
 			<li>
-				<input type="radio" class="hidden" value="duration" id="duration" name="tab">
-				<label for="duration">Flight average duration</label>
+				<input type="radio" class="hidden" value="avgstay" id="avgstay" name="tab">
+				<label for="avgstay">Average available length of stay <strong>per continent</strong></label>
 			</li>
 			
 			<li>			
-				<input type="radio" class="hidden" value="distance" id="distance" name="tab">
-				<label for="distance">Distances</label>
+				<input type="radio" class="hidden" value="visa" id="visa" name="tab">
+				<label for="visa">Visa comparison <strong>per continent</strong></label>
 			</li>
-			-->
-		</ul>
+		</ul>	
 	</nav>
 
-
-	<iframe id="viz"></iframe>
+	<div id="framewrap">
+		<iframe frameborder="0" scroll="no" id="details" seamless class="hidden mediumframe" ></iframe>
+		<iframe frameborder="0" scroll="no" id="viz" seamless ></iframe>
+	</div>
 
 
 	<footer>A project made with ❤️ by <strong><a href="https://jadynekena.com" target="_blank">Jady</a></strong>.</footer>
