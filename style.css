@@ -8,6 +8,7 @@ body {
 nav {
 	margin-bottom: 15px;
 	background-color: #e1e1e1;
+    padding: 10px;
 }
 nav ul {
   margin: 0 15px;
