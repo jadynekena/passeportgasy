@@ -2,83 +2,94 @@
 <html>
 <head>
 	<title>Malagasy Passport | Destinations</title>
+	<meta charset="UTF-8">
 	<meta name="description" content="Use this free website to decide where to go on holidays with your Malagasy Passport.">
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
 	<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+	<script src="./loadData.js"></script>
 	<link href="style.css" rel="stylesheet">
 
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/three@0.103.0/build/three.min.js"></script>
+	<script src="https://raw.githack.com/syt123450/giojs/master/build/gio.min.js"></script>
 
 </head>
 <body>
-	<h1>Where to go with your Malagasy Passport ?<img class="flag" alt="Madagascar flag" src="./favicon.png"></h1>
+	<noscript><h1>Ce site web nécessite d'activer JavaScript pour fonctionner.</h1></noscript>
+	<img src="./loading.gif" class="loading">
+	<div class="wrapper">
 	<nav>
-		<ul>
-			<li>
-				<input type="radio" class="hidden" value="raw" id="raw" name="tab" checked>
-				<label for="raw"><strong>All countries</strong></label>
+		<details>
+			<summary>
+				<h1>Where to go with your Malagasy Passport ?<img class="flag" alt="Madagascar flag" src="./favicon.png"></h1>
+			</summary>
+			<ul>
+				<li>
+					<input type="radio" class="hidden" value="All countries" id="All countries" name="tab" checked>
+					<label for="All countries"><strong>All countries</strong></label>
 
-			</li>
+				</li>
+				
+				<li>			
+					<input type="radio" class="hidden" value="Africa" id="Africa" name="tab">
+					<label for="Africa">
+						Countries <strong>in Africa</strong>					
+					</label>
+				</li>
+
+				
+				<li>			
+					<input type="radio" class="hidden" value="Asia" id="Asia" name="tab">
+					<label for="Asia">
+						Countries <strong>in Asia</strong>
+					</label>
+				</li>
+
+				
+				<li>			
+					<input type="radio" class="hidden" value="America" id="America" name="tab">
+					<label for="America">
+						Countries <strong>in America</strong>
+					</label>
+				</li>
+
+				
+				<li>			
+					<input type="radio" class="hidden" value="Oceania" id="Oceania" name="tab">
+					<label for="Oceania">
+						Countries <strong>in Oceania</strong>
+					</label>
+				</li>
+
+
+			</ul>
+			<a href="./src" target="_blank">See datasets</a>	
+		</details>
+		
+	
 			
-			<li>			
-				<input type="radio" class="hidden" value="africa" id="africa" name="tab">
-				<label for="africa">
-					Countries <strong>in Africa</strong>					
-				</label>
-			</li>
-
-			
-			<li>			
-				<input type="radio" class="hidden" value="asia" id="asia" name="tab">
-				<label for="asia">
-					Countries <strong>in Asia</strong>
-				</label>
-			</li>
-
-			
-			<li>			
-				<input type="radio" class="hidden" value="america" id="america" name="tab">
-				<label for="america">
-					Countries <strong>in America</strong>
-				</label>
-			</li>
-
-			
-			<li>			
-				<input type="radio" class="hidden" value="oceania" id="oceania" name="tab">
-				<label for="oceania">
-					Countries <strong>in Oceania</strong>
-				</label>
-			</li>
-
-		</ul>
-		<ul>
-
-			<li>
-				<input type="radio" class="hidden" value="countries" id="countries" name="tab" >
-				<label for="countries">Number of countries <strong>per continent</strong></label>
-			</li>
-
-			<li>
-				<input type="radio" class="hidden" value="avgstay" id="avgstay" name="tab">
-				<label for="avgstay">Average available length of stay <strong>per continent</strong></label>
-			</li>
-			
-			<li>			
-				<input type="radio" class="hidden" value="visa" id="visa" name="tab">
-				<label for="visa">Visa comparison <strong>per continent</strong></label>
-			</li>
-		</ul>	
 	</nav>
 
 	<div id="framewrap">
-		<iframe frameborder="0" scroll="no" id="details" seamless class="hidden mediumframe" ></iframe>
-		<iframe frameborder="0" scroll="no" id="viz" seamless ></iframe>
+		<div id="title">
+			<h2 id="current"></h2>
+		</div>	
+
+		<div class="background"></div>
+		<div class="content" id="globalArea"></div >	
+		<div class="legend">	
+			<span style="color: green" class="legend-item"><span id="Visa Free" ></span><span >Visa free</span></span>
+			<span style="color: orange" class="legend-item"><span id="Visa on arrival"></span> <span >Visa on arrival</span></span>	
+		</div>
 	</div>
 
 
-	<footer>A project made with ❤️ by <strong><a href="https://jadynekena.com" target="_blank">Jady</a></strong>.</footer>
-
-	<script src="./index.js"></script>
+	
+	<footer>
+		A project made with ❤️ by <strong><a href="https://jadynekena.com" target="_blank">Jady</a></strong>.
+	</footer>
+				
 	<script src="https://jadynekena.com/assets/js/common-elements.js"></script>
+	</div>
 </body>
 </html>

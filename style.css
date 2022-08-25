@@ -1,26 +1,77 @@
 body {
 	height: 99.5vh;
-	margin: 15px 0;
+	margin: 0;
 	font-family: 'Arial';
 	text-align: center;
+	background-color: black;
+	color: white;
+}
+
+body {
+	overflow: hidden;
 }
 
 nav {
-	margin-bottom: 15px;
-	background-color: #e1e1e1;
-    padding: 10px;
+	position: sticky;
+	top: 0;
+	width: 100%;
+	z-index: 5;
+	background-color: #fff;
+	padding: 10px 0;
+	cursor: pointer;
+	color: black;
 }
+
+details {
+	margin: 0 25px;
+}
+
+h1 {
+	display: inline;
+}
+h2 {
+	display: inline-flex;
+	grid-gap: 10px;
+	margin-top: 35px;
+}
+
+.loading {
+	position: fixed;
+	z-index: 999;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 100px;
+}
+
+#current:after {
+	/*content: url('https://api.iconify.design/clarity/eye-show-line.svg?color=white&width=30&height=30');*/
+}
+
+#title {
+	cursor: pointer;
+	position: absolute;
+	text-align: center;
+	width: 100%;
+}
+
+#title h2:hover, .legend-item:hover {
+	text-decoration: underline;
+}
+
 nav ul {
-  margin: 0 15px;
+	margin: 15px;
 }
 
 footer {
-	text-align: center;
-	width: 100%;
-	padding: 15px 0;
-	position: fixed;
-	bottom: 0;
-	color: grey;
+	width: fit-content;
+	padding: 10px;
+	background-color: #f9f7f76b;
+	font-weight: bold;
+	margin-top: 50px;
+	margin-left: auto;
+	margin-right: auto;
+	border-radius: 10px;
 }
 
 .wrapflex {
@@ -32,25 +83,29 @@ footer {
 	flex-wrap: wrap;
 }
 
-iframe {
-	max-width: 60vw;
-	min-width: 300px;
+.background {
+	position: absolute;
+	background-image: url('https://unsplash.com/photos/uhjiu8FjnsQ/download?ixid=MnwxMjA3fDB8MXxzZWFyY2h8N3x8c3RhcnN8ZW58MHx8fHwxNjYxMzUxNzU1&force=true&w=640');
+	filter: blur(0.5px);
+	z-index: -1;
+}
+
+.content {
 	border: 0;
-	width: 100%;
-	margin-bottom: 25px;
-	box-shadow: 0 0 10px 1px #c6c6c6;
+	margin-bottom: 10px;
 	border-radius: 15px;
 }
 
-.smallframe {
-	height: 300px;
-	width: 500px;
-	margin-bottom: 150px;
+#framewrap .background, #framewrap .content {
+	width: 100%;
+	min-width: 300px;
+	height: calc(100vh - 180px);
+	min-height: 300px;
+
 }
 
-.mediumframe {
-	height: 550px;
-	padding: 15px;
+.legend-item {
+	cursor: pointer;
 }
 
 ul {
@@ -82,9 +137,24 @@ label {
 
 label:hover, input:checked ~ label {
 	background-color: white;
+	color: black;
 	
 }
 
 input:checked ~ label {
 	border: 3px inset #ececec;
+}
+
+.wrapper {
+	
+}
+
+
+.legend {
+	width: 100%;
+}
+
+.legend * {
+	padding: 5px;
+	font-weight: bold;
 }
