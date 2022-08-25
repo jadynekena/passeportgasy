@@ -86,7 +86,7 @@ footer {
 .background {
 	position: absolute;
 	background-image: url('https://unsplash.com/photos/uhjiu8FjnsQ/download?ixid=MnwxMjA3fDB8MXxzZWFyY2h8N3x8c3RhcnN8ZW58MHx8fHwxNjYxMzUxNzU1&force=true&w=640');
-	filter: blur(0.5px);
+	filter: blur(1px);
 	z-index: -1;
 }
 
