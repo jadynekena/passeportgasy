@@ -38,7 +38,7 @@ You can :
 And I'll be happy to get you involved !
 
 # Current Roadmap
-- [ ] Add a valid Readme file
+- [x] Add a valid Readme file
 - [ ] Switch the project to ReactJS
 - [ ] Find a cool table viewing solution (in ReactJS)
 - [ ] Mention all contributors in the website
