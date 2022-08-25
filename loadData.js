@@ -191,9 +191,30 @@ const formatJson = (json) => {
 	if(!json) return ""
 
 	Object.keys(json).map(key => {
-		res += '<br>' + '<strong>' + key  + '</strong>' + ' : ' + json[key]
+		res += '<br>' + '<strong>' + key  + '</strong>' + ' : ' + convertToLink(json[key])
 	})
 	return res
+}
+
+const convertToLink = (val) => {
+	if(isURL(val)){
+		return '<a class="nd" target="_blank" href="'+val+'">'+val+'</a>'
+	}else{
+		return val
+	}
+}
+
+const isURL = (str) => {
+  let url;
+  
+  try {
+    url = new URL(str||"");
+  } catch (_) {
+    return false;  
+  }
+
+  return url.protocol === "http:" || url.protocol === "https:";
+
 }
 
 const getCountryDetailsFromISO = (iso,detail) => {
@@ -272,6 +293,12 @@ const mainThread = async () => {
 	setLoading(false)
 
 	controller.onCountryPicked(countryPickHandler);
+
+	//on nav detail => hide popup
+	document.querySelector("#topbar").addEventListener('click', function(){
+		displayPopup(false)
+	})
+
 
 	//on title click => more details
 	document.querySelector("#title").addEventListener('click', seeContinentDetails)
