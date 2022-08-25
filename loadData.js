@@ -207,7 +207,7 @@ const getCountryDetailsFromISO = (iso,detail) => {
 
 const countryPickHandler = (selectedCountry,relatedCountries ) => {
 	const iso = selectedCountry.ISOCode || "MG"
-	const img = '<img src="https://countryflagsapi.com/png/'+iso+'" class="flag">'
+	const img = '<img src="https://countryflagsapi.com/png/'+iso+'" class="flagInfo">'
 	const popupContent = img + (getAdditionalInfo(selectedCountry) || "<p>Madagascar, where the passport is from.</p>")
 	const countryName =  getCountryDetailsFromISO(iso, "Country") || "Madagascar"
 
@@ -247,7 +247,7 @@ const handleVisaDetails = (e) => {
 
 const countriesInfos = (relatedCountries) => {
 	const infos = relatedCountries.map(e => {
-		const img = '<img src="https://countryflagsapi.com/png/'+e["Country code"]+'" class="flag">'
+		const img = '<img src="https://countryflagsapi.com/png/'+e["Country code"]+'" class="flagInfo">'
 		return '<div class="info">'+ img +  formatJson(e) + '</div>'
 	}).join('')
 

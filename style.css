@@ -219,7 +219,7 @@ input:checked ~ label {
 	font-weight: bold;	
 }
 
-.flag {
+.flagInfo {
 	width: 50px;
 	margin-top: 25px;
 }
