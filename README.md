@@ -15,7 +15,7 @@ git clone https://github.com/jadynekena/passeportgasy
 cd passeportgasy
 serve
 ```
-**As for now, this project is in Vanilla JS. Later on, the serve might use react server.**
+**As for now, this project is in Vanilla JS. Later on, we might use react server.**
 
 ## Step 3 : preview the app
 Just go to `localhost:3000` and the app must be available.
