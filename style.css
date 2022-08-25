@@ -205,3 +205,8 @@ input:checked ~ label {
 	width: 100%;
 	height: auto;
 }
+
+.info {
+	padding: 5px;
+	margin: 5px;
+}

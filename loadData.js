@@ -213,7 +213,7 @@ const seeContinentDetails = () => {
 
 	//store all informations 
 	const infos = relatedCountries.map(e => {
-		return formatJson(e) + '\n\n'
+		return '<div class="info">'+ formatJson(e) + '</div>'
 	}).join('')
 
 	alert(popupContent + '\n' + infos)
@@ -233,7 +233,7 @@ const handleVisaDetails = (e) => {
 
 	//store all informations 
 	const infos = relatedCountries.map(e => {
-		return formatJson(e) + '\n\n'
+		return '<div class="info">'+ formatJson(e) + '</div>'
 	}).join('')
 
 	alert(popupContent + '\n' + infos)
