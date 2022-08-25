@@ -210,3 +210,11 @@ input:checked ~ label {
 	padding: 5px;
 	margin: 5px;
 }
+
+#infoTitle {
+	position: sticky;
+	top: 0;
+	background-color: #ececece0;
+	font-size: x-large;
+	font-weight: bold;	
+}

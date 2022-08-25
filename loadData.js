@@ -196,17 +196,25 @@ const formatJson = (json) => {
 	return res
 }
 
+const getCountryDetailsFromISO = (iso,detail) => {
+	var res = getItem('datas').find(e => e['Country code'] === iso) || ""
+	if(res && res[detail]){
+		res = res[detail]
+	}
+
+	return res
+}
 
 const countryPickHandler = (selectedCountry,relatedCountries ) => {
-	const popupContent = (getAdditionalInfo(selectedCountry) || "No details found.")
+	const popupContent = (getAdditionalInfo(selectedCountry) || "Madagascar, where the passport is from.")
+	const countryName =  getCountryDetailsFromISO(selectedCountry.ISOCode, "Country")
 	
 	controller.switchCountry("MG")
-	alert(popupContent)
+	alert(countryName, popupContent)
 }
 
 const seeContinentDetails = () => {
 	const cont = currentContinent()
-	const popupContent = '----- ' +  cont + ' -----'
 	
 	//get all countries of the continent
 	const relatedCountries = getCountriesFromContinent(cont)
@@ -216,14 +224,13 @@ const seeContinentDetails = () => {
 		return '<div class="info">'+ formatJson(e) + '</div>'
 	}).join('')
 
-	alert(popupContent + '\n' + infos)
+	alert(cont, infos)
 
 }
 
 const handleVisaDetails = (e) => {
 	const clickedID = e.currentTarget.firstChild.id
 	const cont = currentContinent()
-	const popupContent = '----- ' + clickedID + ' -----'
 	
 	//get all countries of the continent
 	var relatedCountries = getCountriesFromContinent(cont)
@@ -236,7 +243,7 @@ const handleVisaDetails = (e) => {
 		return '<div class="info">'+ formatJson(e) + '</div>'
 	}).join('')
 
-	alert(popupContent + '\n' + infos)
+	alert(clickedID, infos)
 
 }
 
@@ -245,7 +252,8 @@ const displayPopup = (yes) => {
 	popup.style.visibility = yes ? 'visible' : 'hidden'
 }
 
-const alert = (content) => {
+const alert = (infoTitle,content) => {
+	document.getElementById('infoTitle').innerText = infoTitle
 	document.getElementById('popupContent').innerHTML = content
 	displayPopup(true)
 }
