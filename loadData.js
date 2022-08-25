@@ -191,7 +191,7 @@ const formatJson = (json) => {
 	if(!json) return ""
 
 	Object.keys(json).map(key => {
-		res += '\n' + key + ' : ' + json[key]
+		res += '<br>' + '<strong>' + key  + '</strong>' + ' : ' + json[key]
 	})
 	return res
 }
@@ -238,6 +238,16 @@ const handleVisaDetails = (e) => {
 
 	alert(popupContent + '\n' + infos)
 
+}
+
+const displayPopup = (yes) => {
+	const popup = document.getElementById('popup')
+	popup.style.visibility = yes ? 'visible' : 'hidden'
+}
+
+const alert = (content) => {
+	document.getElementById('popupContent').innerHTML = content
+	displayPopup(true)
 }
 
 const mainThread = async () => {

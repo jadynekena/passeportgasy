@@ -158,3 +158,50 @@ input:checked ~ label {
 	padding: 5px;
 	font-weight: bold;
 }
+
+#popup {
+	position: fixed;
+	min-width: 320px;
+	width: 50%;
+	top: 50%;
+	left: 50%;
+	height: 400px;
+	z-index: 6;
+	transform: translate(-50%, -50%);
+	padding-top: 0;
+	background-color: #fffc;
+	transition: smooth;
+	backdrop-filter: blur(25px);
+	color: black;
+	border-radius: 25px;
+	padding: 20px;
+	visibility: hidden;
+}
+
+.btnwrapper {
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+#closebtn {
+	top: 0;
+	right: 45px;
+	font-weight: bold;
+	padding: 0 20px;
+	position: sticky;
+	margin-bottom: 15px;
+}
+
+.cardwrapper {
+	overflow: auto;
+	overflow-wrap: anywhere;
+	max-height: 87%;
+	width: 100%;
+}
+
+.card {
+	width: 100%;
+	height: auto;
+}
