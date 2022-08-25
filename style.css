@@ -189,7 +189,7 @@ input:checked ~ label {
 	top: 0;
 	right: 45px;
 	font-weight: bold;
-	padding: 0 20px;
+	padding: 3px 20px;
 	position: sticky;
 	margin-bottom: 15px;
 }
@@ -217,4 +217,9 @@ input:checked ~ label {
 	background-color: #ececece0;
 	font-size: x-large;
 	font-weight: bold;	
+}
+
+.flag {
+	width: 50px;
+	margin-top: 25px;
 }

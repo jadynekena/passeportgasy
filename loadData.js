@@ -206,9 +206,11 @@ const getCountryDetailsFromISO = (iso,detail) => {
 }
 
 const countryPickHandler = (selectedCountry,relatedCountries ) => {
-	const popupContent = (getAdditionalInfo(selectedCountry) || "Madagascar, where the passport is from.")
-	const countryName =  getCountryDetailsFromISO(selectedCountry.ISOCode, "Country")
-	
+	const iso = selectedCountry.ISOCode || "MG"
+	const img = '<img src="https://countryflagsapi.com/png/'+iso+'" class="flag">'
+	const popupContent = img + (getAdditionalInfo(selectedCountry) || "<p>Madagascar, where the passport is from.</p>")
+	const countryName =  getCountryDetailsFromISO(iso, "Country") || "Madagascar"
+
 	controller.switchCountry("MG")
 	alert(countryName, popupContent)
 }
@@ -220,9 +222,7 @@ const seeContinentDetails = () => {
 	const relatedCountries = getCountriesFromContinent(cont)
 
 	//store all informations 
-	const infos = relatedCountries.map(e => {
-		return '<div class="info">'+ formatJson(e) + '</div>'
-	}).join('')
+	const infos = countriesInfos(relatedCountries)
 
 	alert(cont, infos)
 
@@ -239,12 +239,19 @@ const handleVisaDetails = (e) => {
 	relatedCountries = relatedCountries.filter(e => e["Visa requirements"] === clickedID)
 
 	//store all informations 
-	const infos = relatedCountries.map(e => {
-		return '<div class="info">'+ formatJson(e) + '</div>'
-	}).join('')
+	const infos = countriesInfos(relatedCountries)
 
 	alert(clickedID, infos)
 
+}
+
+const countriesInfos = (relatedCountries) => {
+	const infos = relatedCountries.map(e => {
+		const img = '<img src="https://countryflagsapi.com/png/'+e["Country code"]+'" class="flag">'
+		return '<div class="info">'+ img +  formatJson(e) + '</div>'
+	}).join('')
+
+	return  infos
 }
 
 const displayPopup = (yes) => {
