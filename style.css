@@ -22,6 +22,12 @@ nav#topbar {
 	color: black;
 }
 
+a button {
+  padding: 8px;
+  background-color: white;
+  border-radius: 8px;
+}
+
 details {
 	margin: 0 25px;
 }
