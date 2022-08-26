@@ -215,6 +215,7 @@ input:checked ~ label {
 .card {
 	width: 100%;
 	height: auto;
+	text-align: left;
 }
 
 .info {

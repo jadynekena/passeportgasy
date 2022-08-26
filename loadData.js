@@ -119,8 +119,8 @@ const transformedDatas = (optionalContinent) => {
 
 	var resAll = raw.map((r,i) => {
 		const countryCode = r["Country code"]
-		const factor = r["Visa requirements"] === "Visa Free" ? 5 : 1; 
-		const color = r["Visa requirements"] === "Visa Free" ? 'green' : 'orange'; 
+		const factor = r["Visa requirements"] === "Visa Free" ? 3 : 1; 
+		const color = r["Visa requirements"] === "Visa Free" ? 'lime' : 'orange'; 
 		const continent = r["Continent"]
 
 		const tmp = {
@@ -191,9 +191,25 @@ const formatJson = (json) => {
 	if(!json) return ""
 
 	Object.keys(json).map(key => {
-		res += '<br>' + '<strong>' + key  + '</strong>' + ' : ' + convertToLink(json[key])
+		res += '<br>' + '<strong>' + key  + '</strong>' + ' : ' + visaFormatting(convertToLink(json[key]))
 	})
+	console.log({res})
 	return res
+}
+
+const visaFormatting = (str) => {
+	console.log('\n\n'+str)
+	str = str.toString()
+	if(str.toLowerCase() === 'visa free'){
+		console.log('free')
+		return '<strong style="background-color:lime;">'+str+'</strong>'
+	}else if(str.toLowerCase() === 'visa on arrival'){
+		console.log('arrival')
+		return '<strong style="background-color:orange;">'+str+'</strong>'
+	}else{
+		console.log('normal')
+		return str
+	}
 }
 
 const convertToLink = (val) => {
