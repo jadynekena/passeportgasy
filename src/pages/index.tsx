@@ -12,7 +12,15 @@ const Failure: FC = () => {
 }
 
 const Loading: FC = () => {
-  return <Spinner mx="auto" size="xl" color="blue.500" emptyColor="gray.200" />
+  return (
+    <Spinner
+      mx="auto"
+      size="xl"
+      color="blue.500"
+      emptyColor="gray.200"
+      role="progressbar"
+    />
+  )
 }
 
 const Success: FC<{ data: Awaited<ReturnType<typeof getPassportData>> }> = ({

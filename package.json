@@ -9,6 +9,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "export": "next export",
     "start": "next start",
     "lint": "eslint --fix --cache .",
     "typecheck": "tsc --noEmit",
