@@ -11,7 +11,7 @@ export type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout
 }
 
-export interface PassportData {
+export interface PassportRawData {
   Continent: string
   Country: string
   "Country code": string
@@ -24,4 +24,12 @@ export interface PassportData {
   "Average direct flight duration (hours)": number
   "Direct flights available": string
   _GSHEET_ROW_NUMBER: number
+}
+
+export interface PasseportInformationPerCountry {
+  name: string
+  code: string
+  continent: string
+  requirement: string
+  lastVerified: string
 }

@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query"
 import { FC } from "react"
 
-import type { PassportData, NextPageWithLayout } from "src/types"
+import type { NextPageWithLayout } from "src/types"
 import SEO from "src/components/seo"
 import { getPassportData } from "src/api/passport"
 
@@ -13,21 +13,22 @@ const Loading: FC = () => {
   return <p role="progressbar">Loading...</p>
 }
 
-const Success: FC<{ data: PassportData[] }> = ({ data }) => {
+const Success: FC<{ data: Awaited<ReturnType<typeof getPassportData>> }> = ({
+  data,
+}) => {
   return (
     <ul>
       {data.map((d) => {
-        const visaReq = d["Visa requirements"]
-        const countryCode = d["Country code"]
-        const countryName = d.Country
-        const continent = d.Continent
+        const { requirement, code, name, continent } = d
         return (
-          <li key={countryName + "-" + countryCode}>
-            {continent} {countryCode} {countryName} -{" "}
+          <li key={name + "-" + code}>
+            {continent} {code} {name} -{" "}
             <span
-              style={{ color: visaReq === "Visa Free" ? "green" : "orange" }}
+              style={{
+                color: requirement === "Visa Free" ? "green" : "orange",
+              }}
             >
-              {visaReq}
+              {requirement}
             </span>
           </li>
         )

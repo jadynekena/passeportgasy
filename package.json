@@ -27,6 +27,7 @@
   },
   "dependencies": {
     "@tanstack/react-query": "^4.0.10",
+    "@tanstack/react-table": "^8.5.11",
     "next": "^12.2.3",
     "react": "18.1.0",
     "react-dom": "18.1.0"

@@ -2,6 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@tanstack/react-query': ^4.0.10
+  '@tanstack/react-table': ^8.5.11
   '@testing-library/jest-dom': ^5.16.4
   '@testing-library/react': ^13.3.0
   '@types/node': ^17.0.45
@@ -23,6 +24,7 @@ specifiers:
 
 dependencies:
   '@tanstack/react-query': 4.0.10_ef5jwxihqo6n7gxfmzogljlgcm
+  '@tanstack/react-table': 8.5.11_ef5jwxihqo6n7gxfmzogljlgcm
   next: 12.2.3_ef5jwxihqo6n7gxfmzogljlgcm
   react: 18.1.0
   react-dom: 18.1.0_react@18.1.0
@@ -849,6 +851,23 @@ packages:
       react: 18.1.0
       react-dom: 18.1.0_react@18.1.0
       use-sync-external-store: 1.2.0_react@18.1.0
+    dev: false
+
+  /@tanstack/react-table/8.5.11_ef5jwxihqo6n7gxfmzogljlgcm:
+    resolution: {integrity: sha512-bIegBJ3VPUX3Z7rMnFEnTRCRgPccTsciilQA1ib/pA6M7Qq1boTNPjNjSbEHmBKytaxPrPfcUfzkZLogYtvu3g==}
+    engines: {node: '>=12'}
+    peerDependencies:
+      react: '>=16'
+      react-dom: '>=16'
+    dependencies:
+      '@tanstack/table-core': 8.5.11
+      react: 18.1.0
+      react-dom: 18.1.0_react@18.1.0
+    dev: false
+
+  /@tanstack/table-core/8.5.11:
+    resolution: {integrity: sha512-ZN61ockLaIAiiPbZfMKT2S03nbWx28OHg/nAiDnNfmN4QmAMcdwVajPn2QQwnNVGAr4jS4nbhbYzCcjq8livXQ==}
+    engines: {node: '>=12'}
     dev: false
 
   /@testing-library/dom/8.13.0:
