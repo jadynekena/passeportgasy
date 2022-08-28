@@ -26,8 +26,13 @@
     ]
   },
   "dependencies": {
+    "@chakra-ui/icons": "^2.0.9",
+    "@chakra-ui/react": "^2.2.9",
+    "@emotion/react": "^11.10.0",
+    "@emotion/styled": "^11.10.0",
     "@tanstack/react-query": "^4.0.10",
     "@tanstack/react-table": "^8.5.11",
+    "framer-motion": "^7.2.1",
     "next": "^12.2.3",
     "react": "18.1.0",
     "react-dom": "18.1.0"

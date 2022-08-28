@@ -1,6 +1,7 @@
 // VENDORS
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import { useState } from "react"
+import { ChakraProvider } from "@chakra-ui/react"
 import type { AppType } from "next/dist/shared/lib/utils"
 
 import type { AppPropsWithLayout } from "src/types"
@@ -17,7 +18,7 @@ const MyApp = (({ Component, pageProps }: AppPropsWithLayout) => {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {getLayout(<Component {...pageProps} />)}
+      <ChakraProvider>{getLayout(<Component {...pageProps} />)}</ChakraProvider>
     </QueryClientProvider>
   )
 }) as AppType
