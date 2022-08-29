@@ -32,7 +32,7 @@ export const columns = [
     cell: (info) => (
       <Text
         textTransform="capitalize"
-        color={info.getValue() === "Free" ? "green.500" : "orange.500"}
+        color={info.getValue() === "Free" ? "green.600" : "red.600"}
       >
         {info.getValue()}
       </Text>
