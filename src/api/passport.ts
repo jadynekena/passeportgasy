@@ -12,7 +12,7 @@ export const getPassportData = async (): Promise<
     name: d.Country,
     code: d["Country code"],
     continent: d.Continent,
-    requirement: d["Visa requirements"],
+    requirement: d["Visa requirements"].split("Visa ")[1],
     lastVerified: d["Verification status"],
   }))
 }
