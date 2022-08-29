@@ -56,3 +56,48 @@ And I'll be happy to get you involved !
 - [ ] Find a cool table viewing solution (in ReactJS)
 - [ ] Mention all contributors in the website
 - [ ] Fill up all missing back-end datas
+
+---
+
+## React version of the app
+
+### Tech stack
+
+- [Next.js](https://nextjs.org/) : meta framework based on react
+- [Typescript](https://www.typescriptlang.org/) : javascript superset that brings static types
+- [Chakra UI](https://chakra-ui.com/) : react UI library
+- [Tanstack Table](https://tanstack.com/table/v8) : headless table library
+
+### Development
+
+#### Requirements
+
+- [`node`](https://nodejs.org/en/download/) (16)
+- [`pnpm`](https://pnpm.io/installation) (7)
+
+#### How to run development server
+
+Install the project dependencies
+
+```shell
+pnpm install
+```
+
+Copy the `.env.example` and rename to `.env.local`
+
+```shell
+cp .env.example .env.local
+```
+
+Complete the environment variables in `.env.local`
+
+```txt
+NEXT_PUBLIC_API_KEY=
+NEXT_PUBLIC_IDSHEET=
+```
+
+Run server and open `http://localhost:3000/`
+
+```shell
+pnpm dev
+```
