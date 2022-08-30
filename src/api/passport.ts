@@ -14,5 +14,7 @@ export const getPassportData = async (): Promise<
     continent: d.Continent,
     requirement: d["Visa requirements"].split("Visa ")[1],
     lastVerified: d["Verification status"],
+    maxLengthStay: d["Max length of stay (days)"],
+    source: d["Visa References"],
   }))
 }

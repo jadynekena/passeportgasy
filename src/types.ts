@@ -17,7 +17,7 @@ export interface PassportRawData {
   "Country code": string
   "Visa requirements": string
   "Verification status": string
-  "Max length of stay (days)": any
+  "Max length of stay (days)": number
   "Visa References": string
   "Any malagasy traveled over there and testified": string
   "Distance (km)": number
@@ -32,4 +32,6 @@ export interface PasseportInformationPerCountry {
   continent: string
   requirement: string
   lastVerified: string
+  maxLengthStay: number
+  source: string
 }

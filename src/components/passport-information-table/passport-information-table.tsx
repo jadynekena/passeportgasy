@@ -46,7 +46,7 @@ const PassportInformationTable: FC<{
           return (
             <Tr key={headerGroup.id}>
               {headerGroup.headers.map((header) => {
-                if (header.id === "actions")
+                if (header.id === "actions" || header.id === "source")
                   return <Th key={header.id} colSpan={header.colSpan} />
                 return (
                   <Th key={header.id} colSpan={header.colSpan}>

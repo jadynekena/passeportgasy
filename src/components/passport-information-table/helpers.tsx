@@ -9,11 +9,12 @@ import {
   Text,
   useDisclosure,
   IconButton,
+  Link,
 } from "@chakra-ui/react"
 
 import type { PasseportInformationPerCountry } from "src/types"
 import { FC, ReactNode } from "react"
-import { InfoOutlineIcon } from "@chakra-ui/icons"
+import { ExternalLinkIcon, InfoOutlineIcon } from "@chakra-ui/icons"
 
 const columnHelper = createColumnHelper<PasseportInformationPerCountry>()
 export const columns = [
@@ -37,6 +38,16 @@ export const columns = [
         {info.getValue()}
       </Text>
     ),
+  }),
+  columnHelper.accessor("source", {
+    header: "Source",
+    cell(props) {
+      return (
+        <Link href={props.getValue()} isExternal>
+          Source <ExternalLinkIcon />
+        </Link>
+      )
+    },
   }),
   columnHelper.display({
     id: "actions",
@@ -62,6 +73,7 @@ const DetailModal: FC<{ children: ReactNode }> = ({ children }) => {
         aria-label="See details"
         icon={<InfoOutlineIcon />}
         variant="ghost"
+        title="See details"
       />
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
