@@ -18,10 +18,10 @@ import { ExternalLinkIcon, InfoOutlineIcon } from "@chakra-ui/icons"
 
 const columnHelper = createColumnHelper<PasseportInformationPerCountry>()
 export const columns = [
-  //columnHelper.accessor("code", {
-  //  header: "Code",
-  //  cell: (info) => info.getValue(),
-  //}),
+  columnHelper.accessor("continent", {
+    header: "Continent",
+    cell: (info) => info.getValue(),
+  }),
   columnHelper.accessor("name", {
     header: "Country",
     cell: (info) => info.getValue(),

@@ -1,10 +1,13 @@
-import type { FC } from "react"
+import { FC } from "react"
 import {
   useReactTable,
   getCoreRowModel,
   getSortedRowModel,
   flexRender,
   getFilteredRowModel,
+  getFacetedUniqueValues,
+  getFacetedRowModel,
+  Column,
 } from "@tanstack/react-table"
 import {
   Table,
@@ -38,6 +41,8 @@ const PassportInformationTable: FC<{
     getCoreRowModel: getCoreRowModel(),
     getSortedRowModel: getSortedRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
+    getFacetedUniqueValues: getFacetedUniqueValues(),
+    getFacetedRowModel: getFacetedRowModel(),
   })
   return (
     <Table>
@@ -70,21 +75,7 @@ const PassportInformationTable: FC<{
                           )}
                     </Flex>
                     {header.column.getCanFilter() ? (
-                      <Box>
-                        <InputGroup size="sm">
-                          <InputLeftElement pointerEvents="none">
-                            <Search2Icon color="gray.200" />
-                          </InputLeftElement>
-                          <Input
-                            value={
-                              (header.column.getFilterValue() ?? "") as string
-                            }
-                            onChange={(e) =>
-                              header.column.setFilterValue(e.target.value)
-                            }
-                          />
-                        </InputGroup>
-                      </Box>
+                      <Filter column={header.column} />
                     ) : null}
                   </Th>
                 )
@@ -105,6 +96,36 @@ const PassportInformationTable: FC<{
         ))}
       </Tbody>
     </Table>
+  )
+}
+
+const Filter: FC<{
+  column: Column<PasseportInformationPerCountry, unknown>
+}> = ({ column }) => {
+  const uniqueValuesSorted = Array.from(
+    column.getFacetedUniqueValues().keys()
+  ).sort()
+
+  return (
+    <Box>
+      <InputGroup size="sm">
+        <InputLeftElement pointerEvents="none">
+          <Search2Icon color="gray.200" />
+        </InputLeftElement>
+        <datalist id={column.id + "list"}>
+          {uniqueValuesSorted.map((v) => (
+            <option value={v} key={v}>
+              {v}
+            </option>
+          ))}
+        </datalist>
+        <Input
+          list={column.id + "list"}
+          value={(column.getFilterValue() ?? "") as string}
+          onChange={(e) => column.setFilterValue(e.target.value)}
+        />
+      </InputGroup>
+    </Box>
   )
 }
 
