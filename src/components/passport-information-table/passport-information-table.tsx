@@ -21,6 +21,7 @@ import {
   InputGroup,
   InputLeftElement,
   Box,
+  TableContainer,
 } from "@chakra-ui/react"
 import {
   Search2Icon,
@@ -45,63 +46,65 @@ const PassportInformationTable: FC<{
     getFacetedRowModel: getFacetedRowModel(),
   })
   return (
-    <Table>
-      <Thead>
-        {table.getHeaderGroups().map((headerGroup) => {
-          return (
-            <Tr key={headerGroup.id}>
-              {headerGroup.headers.map((header) => {
-                switch (header.id) {
-                  case "actions":
-                  case "source":
-                  case "lastVerified":
-                  case "maxLengthStay":
-                    return <Th key={header.id} colSpan={header.colSpan} />
-                  default:
-                    return (
-                      <Th key={header.id} colSpan={header.colSpan}>
-                        <Flex
-                          alignItems="center"
-                          mb={2}
-                          sx={{ gap: 2 }}
-                          onClick={header.column.getToggleSortingHandler()}
-                        >
-                          {{
-                            asc: <TriangleDownIcon />,
-                            desc: <TriangleUpIcon />,
-                          }[header.column.getIsSorted() as string] ?? (
-                            <UpDownIcon />
-                          )}
-                          {header.isPlaceholder
-                            ? null
-                            : flexRender(
-                                header.column.columnDef.header,
-                                header.getContext()
-                              )}
-                        </Flex>
-                        {header.column.getCanFilter() ? (
-                          <Filter column={header.column} />
-                        ) : null}
-                      </Th>
-                    )
-                }
-              })}
+    <TableContainer>
+      <Table size="sm">
+        <Thead>
+          {table.getHeaderGroups().map((headerGroup) => {
+            return (
+              <Tr key={headerGroup.id}>
+                {headerGroup.headers.map((header) => {
+                  switch (header.id) {
+                    case "actions":
+                    case "source":
+                    case "lastVerified":
+                    case "maxLengthStay":
+                      return <Th key={header.id} colSpan={header.colSpan} />
+                    default:
+                      return (
+                        <Th key={header.id} colSpan={header.colSpan}>
+                          <Flex
+                            alignItems="center"
+                            mb={2}
+                            sx={{ gap: 2 }}
+                            onClick={header.column.getToggleSortingHandler()}
+                          >
+                            {{
+                              asc: <TriangleDownIcon />,
+                              desc: <TriangleUpIcon />,
+                            }[header.column.getIsSorted() as string] ?? (
+                              <UpDownIcon />
+                            )}
+                            {header.isPlaceholder
+                              ? null
+                              : flexRender(
+                                  header.column.columnDef.header,
+                                  header.getContext()
+                                )}
+                          </Flex>
+                          {header.column.getCanFilter() ? (
+                            <Filter column={header.column} />
+                          ) : null}
+                        </Th>
+                      )
+                  }
+                })}
+              </Tr>
+            )
+          })}
+        </Thead>
+        <Tbody>
+          {table.getRowModel().rows.map((row) => (
+            <Tr key={row.id}>
+              {row.getVisibleCells().map((cell) => (
+                <Td key={cell.id}>
+                  {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                </Td>
+              ))}
             </Tr>
-          )
-        })}
-      </Thead>
-      <Tbody>
-        {table.getRowModel().rows.map((row) => (
-          <Tr key={row.id}>
-            {row.getVisibleCells().map((cell) => (
-              <Td key={cell.id}>
-                {flexRender(cell.column.columnDef.cell, cell.getContext())}
-              </Td>
-            ))}
-          </Tr>
-        ))}
-      </Tbody>
-    </Table>
+          ))}
+        </Tbody>
+      </Table>
+    </TableContainer>
   )
 }
 
