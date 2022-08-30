@@ -39,15 +39,21 @@ export const columns = [
       </Text>
     ),
   }),
+  columnHelper.accessor("maxLengthStay", {
+    header: "Stay",
+    cell(info) {
+      return <Text>{info.getValue()} days</Text>
+    },
+  }),
   columnHelper.accessor("lastVerified", {
     header: "Last verified at",
     cell: (info) => info.getValue(),
   }),
   columnHelper.accessor("source", {
     header: "Source",
-    cell(props) {
+    cell(info) {
       return (
-        <Link href={props.getValue()} isExternal>
+        <Link href={info.getValue()} isExternal>
           Source <ExternalLinkIcon />
         </Link>
       )
@@ -56,11 +62,11 @@ export const columns = [
   columnHelper.display({
     id: "actions",
     header: "Détails",
-    cell: (props) => {
+    cell: (info) => {
       return (
         <DetailModal>
-          <Text>{props.row.getValue("name")}</Text>
-          <Text>{props.row.getValue("name")}</Text>
+          <Text>{info.row.getValue("name")}</Text>
+          <Text>{info.row.getValue("name")}</Text>
         </DetailModal>
       )
     },

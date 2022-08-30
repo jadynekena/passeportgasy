@@ -55,6 +55,7 @@ const PassportInformationTable: FC<{
                   case "actions":
                   case "source":
                   case "lastVerified":
+                  case "maxLengthStay":
                     return <Th key={header.id} colSpan={header.colSpan} />
                   default:
                     return (
