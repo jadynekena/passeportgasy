@@ -39,6 +39,10 @@ export const columns = [
       </Text>
     ),
   }),
+  columnHelper.accessor("lastVerified", {
+    header: "Last verified at",
+    cell: (info) => info.getValue(),
+  }),
   columnHelper.accessor("source", {
     header: "Source",
     cell(props) {

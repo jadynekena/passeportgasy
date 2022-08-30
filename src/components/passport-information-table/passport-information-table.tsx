@@ -51,34 +51,39 @@ const PassportInformationTable: FC<{
           return (
             <Tr key={headerGroup.id}>
               {headerGroup.headers.map((header) => {
-                if (header.id === "actions" || header.id === "source")
-                  return <Th key={header.id} colSpan={header.colSpan} />
-                return (
-                  <Th key={header.id} colSpan={header.colSpan}>
-                    <Flex
-                      alignItems="center"
-                      mb={2}
-                      sx={{ gap: 2 }}
-                      onClick={header.column.getToggleSortingHandler()}
-                    >
-                      {{
-                        asc: <TriangleDownIcon />,
-                        desc: <TriangleUpIcon />,
-                      }[header.column.getIsSorted() as string] ?? (
-                        <UpDownIcon />
-                      )}
-                      {header.isPlaceholder
-                        ? null
-                        : flexRender(
-                            header.column.columnDef.header,
-                            header.getContext()
+                switch (header.id) {
+                  case "actions":
+                  case "source":
+                  case "lastVerified":
+                    return <Th key={header.id} colSpan={header.colSpan} />
+                  default:
+                    return (
+                      <Th key={header.id} colSpan={header.colSpan}>
+                        <Flex
+                          alignItems="center"
+                          mb={2}
+                          sx={{ gap: 2 }}
+                          onClick={header.column.getToggleSortingHandler()}
+                        >
+                          {{
+                            asc: <TriangleDownIcon />,
+                            desc: <TriangleUpIcon />,
+                          }[header.column.getIsSorted() as string] ?? (
+                            <UpDownIcon />
                           )}
-                    </Flex>
-                    {header.column.getCanFilter() ? (
-                      <Filter column={header.column} />
-                    ) : null}
-                  </Th>
-                )
+                          {header.isPlaceholder
+                            ? null
+                            : flexRender(
+                                header.column.columnDef.header,
+                                header.getContext()
+                              )}
+                        </Flex>
+                        {header.column.getCanFilter() ? (
+                          <Filter column={header.column} />
+                        ) : null}
+                      </Th>
+                    )
+                }
               })}
             </Tr>
           )
