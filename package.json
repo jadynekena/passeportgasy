@@ -1,0 +1,58 @@
+{
+  "name": "passeportgasy",
+  "description": "Web app to check where you can go with malagasy passport.",
+  "license": "MIT",
+  "author": "TODO",
+  "keywords": [
+    "TODO"
+  ],
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "export": "next export",
+    "start": "next start",
+    "lint": "eslint --fix --cache .",
+    "typecheck": "tsc --noEmit",
+    "format": "prettier --write --ignore-unknown .",
+    "prepare": "husky install",
+    "test": "jest",
+    "test:watch": "jest --watch"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,css,scss,sass,md,mdx,html,json}": [
+      "prettier --write --ignore-unknown"
+    ],
+    "*.{jsx,js,ts,tsx}": [
+      "eslint --fix --cache"
+    ]
+  },
+  "dependencies": {
+    "@chakra-ui/icons": "^2.0.9",
+    "@chakra-ui/react": "^2.2.9",
+    "@emotion/react": "^11.10.0",
+    "@emotion/styled": "^11.10.0",
+    "@tanstack/react-query": "^4.0.10",
+    "@tanstack/react-table": "^8.5.11",
+    "framer-motion": "^7.2.1",
+    "next": "^12.2.3",
+    "react": "18.1.0",
+    "react-dom": "18.1.0"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^13.3.0",
+    "@types/node": "^17.0.45",
+    "@types/react": "^18.0.15",
+    "@typescript-eslint/eslint-plugin": "^5.32.0",
+    "@typescript-eslint/parser": "^5.32.0",
+    "eslint": "^8.21.0",
+    "eslint-config-next": "^12.2.3",
+    "eslint-config-prettier": "^8.5.0",
+    "husky": "^7.0.4",
+    "jest": "^27.5.1",
+    "lint-staged": "^12.5.0",
+    "prettier": "^2.7.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.7.4"
+  }
+}
