@@ -73,14 +73,14 @@ And I'll be happy to get you involved !
 #### Requirements
 
 - [`node`](https://nodejs.org/en/download/) (16)
-- [`pnpm`](https://pnpm.io/installation) (7)
+- [`npm`](https://docs.npmjs.com/about-npm) (8)
 
 #### How to run development server
 
 Install the project dependencies
 
 ```shell
-pnpm install
+npm install
 ```
 
 Copy the `.env.example` and rename to `.env.local`
@@ -99,5 +99,5 @@ NEXT_PUBLIC_IDSHEET=
 Run server and open `http://localhost:3000/`
 
 ```shell
-pnpm dev
+npm run dev
 ```
