@@ -1,5 +1,5 @@
 # Malagasy Passport
-You can check the final app [here](https://malagasypassport.ml).
+You can check the final app [here](https://jadynekena.com/malagasypassport).
 
 # How to run it locally
 Make sure you have :

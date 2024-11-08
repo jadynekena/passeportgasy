@@ -1,7 +1,4 @@
-const IDSHEET = '1X5KsKk1FGqiaEw2stbthPMdWQyhK0UDEu4ZffN7SDPw'
-const APIKEY = 'ADEpC8zVwkkgsp-4xnWT87ibpA_lSVnBwNwr0z7llKMVdr2CrkBYS19Pi5cIPN9egE2_IkZMv6vDljFZ6uIjxCjDOWM4HYLjA9ImGRj2mIS24RAZLVD1lNIiFdCHpJ3dTXWBk_6ynv-w'
-const APIURL = 'https://script.google.com/macros/s/AKfycbxASPbjGUjRiZM7ItRlwhHu3tnzdybaPypoFI3p4jF8AJTs8fmdpqw_ji9k46pm60Uf/exec'+
-				'?_action=rest&APIKEY='+APIKEY+'&IDSHEET='+IDSHEET
+const APIURL = "https://script.google.com/macros/s/AKfycbzD_46m1h9fU9lEsvSEQTAHyCnZcj7FJnIwqqAv1tGaMfVdi2171_VkPK9fwnVnCTE/exec?malagasypassport=true"
 var controller = {}
 
 const uselessColumns = ['Country passport', 'Visa requirement ID', '_GSHEET_ROW_NUMBER']
@@ -12,25 +9,26 @@ const setLoading = (yes) => {
 
 const updateJson = async (forcing) => {
 
-	var res = getItem('datas')
+	var res = getItem('data')
 
 	if(!res || forcing){
-		const datas = await fetch(APIURL)
+		
+		const data = await fetch(APIURL)
 					.then(response => response.json())
 					.then(data => data)
 
 		//for each array of data
 		//delete all useless columns
-		datas.map(d => {
+		data.map(d => {
 			uselessColumns.map((c) => {
 				if(d[c]) delete d[c]
 			})
 		})
 
-		//console.log({datas})
+		//console.log({data})
 
-		setItem('datas', JSON.stringify(datas), true)
-		return datas
+		setItem('data', JSON.stringify(data), true)
+		return data
 	}else{
 		return res
 	}
@@ -66,28 +64,33 @@ const isJson = (str) => {
 }
 
 const addGlobe = async (optionalContinent) => {
+
+
+
 	// docs here :  https://giojs.org/html/docs/configureParams.html
 	// Get the container to hold the IO globe
 	// Create Gio.controller
 	const container = document.getElementById( "globalArea" );
 	const config = {
-		color: {
-            /*surface: "#FFF"*/
-        },
-        
-        control: {
-        	disableUnmentioned: true,
-        	lightenMentioned: true,
-        	initCountry: 'MG'
-        }
-	}
-	const controller = new GIO.Controller( container, config );
+						control: {
+				        	disableUnmentioned: true,
+				        	lightenMentioned: true,
+				        	initCountry: 'MG'
+				        }
+					}
+	controller = new GIO.Controller( container, config );
 
 
 	// Add data
-	const finalDatas = transformedDatas(optionalContinent) //await remoteDatas() 
-	//console.log({finalDatas})
-	controller.addData( finalDatas );
+	const finaldata_test = await remotedata() 
+	console.log({finaldata_test})
+	//controller.addData( finaldata_test );
+	
+
+	const finaldata = transformeddata(optionalContinent) 
+	console.log({finaldata})
+	controller.addData( finaldata );
+	
 
 	// Initialize and render the globe
 	controller.setTransparentBackground( true ); 
@@ -97,9 +100,17 @@ const addGlobe = async (optionalContinent) => {
 
 
 	return controller
+
+
+
+
+
+
+
+
 }
 
-const remoteDatas = async () => {
+const remotedata = async () => {
 	const link = 'https://raw.githubusercontent.com/syt123450/giojs/master/examples/data/groupData.json'
 	return await fetch(link).then(data => data.json()).then(data => data)
 }
@@ -108,11 +119,11 @@ const currentContinent = () => {
 	return document.querySelector('input:checked').id
 }
 
-const transformedDatas = (optionalContinent) => {
-	var raw = getItem('datas')
+const transformeddata = (optionalContinent) => {
+	var raw = getItem('data')
 	if(optionalContinent) raw = raw.filter(r => r['Continent'].toLowerCase() === optionalContinent.toLowerCase())
 
-	var listOfAllDatas = {
+	var listOfAlldata = {
 		"dataSetKeys": ["All countries"],
 		"initDataSet": currentContinent()
 	}
@@ -132,27 +143,27 @@ const transformedDatas = (optionalContinent) => {
 
 		//push to right continent IF THERE IS A COUNTRY CODE
 		//and create key continent if does not exist
-		if(!listOfAllDatas[continent]){
-			listOfAllDatas[continent] = []
-			listOfAllDatas['dataSetKeys'].push(continent)
+		if(!listOfAlldata[continent]){
+			listOfAlldata[continent] = []
+			listOfAlldata['dataSetKeys'].push(continent)
 		}
 
 		if(countryCode){
-			listOfAllDatas[continent].push(tmp)	
+			listOfAlldata[continent].push(tmp)	
 		} 
 
 		return tmp
 
 	}).filter(data => data.i)
 
-	//console.log({listOfAllDatas})
-	listOfAllDatas["All countries"] = resAll
-	return listOfAllDatas
+	//console.log({listOfAlldata})
+	listOfAlldata["All countries"] = resAll
+	return listOfAlldata
 
 }
 
 const getCountriesFromContinent = (title) => {
-	return getItem('datas').filter(e => title.includes('All countries') ? true : e["Continent"].toLowerCase() === title.toLowerCase())
+	return getItem('data').filter(e => title.includes('All countries') ? true : e["Continent"].toLowerCase() === title.toLowerCase())
 }
 
 const applyTitle = (title)  => {
@@ -181,7 +192,7 @@ const switchContinent = (controller, cont) => {
 }
 
 const getAdditionalInfo = (selectedCountry) => {
-	var additionalInfo = getItem('datas').find(e => e['Country code'] === selectedCountry.ISOCode)
+	var additionalInfo = getItem('data').find(e => e['Country code'] === selectedCountry.ISOCode)
 	return formatJson(additionalInfo)
 }
 
@@ -193,21 +204,21 @@ const formatJson = (json) => {
 	Object.keys(json).map(key => {
 		res += '<br>' + '<strong>' + key  + '</strong>' + ' : ' + visaFormatting(convertToLink(json[key]))
 	})
-	console.log({res})
+	//console.log({res})
 	return res
 }
 
 const visaFormatting = (str) => {
-	console.log('\n\n'+str)
+	//console.log('\n\n'+str)
 	str = str.toString()
 	if(str.toLowerCase() === 'visa free'){
-		console.log('free')
+		//console.log('free')
 		return '<strong style="background-color:lime;">'+str+'</strong>'
 	}else if(str.toLowerCase() === 'visa on arrival'){
-		console.log('arrival')
+		//console.log('arrival')
 		return '<strong style="background-color:orange;">'+str+'</strong>'
 	}else{
-		console.log('normal')
+		//console.log('normal')
 		return str
 	}
 }
@@ -234,7 +245,7 @@ const isURL = (str) => {
 }
 
 const getCountryDetailsFromISO = (iso,detail) => {
-	var res = getItem('datas').find(e => e['Country code'] === iso) || ""
+	var res = getItem('data').find(e => e['Country code'] === iso) || ""
 	if(res && res[detail]){
 		res = res[detail]
 	}
@@ -244,7 +255,7 @@ const getCountryDetailsFromISO = (iso,detail) => {
 
 const countryPickHandler = (selectedCountry,relatedCountries ) => {
 	const iso = selectedCountry.ISOCode || "MG"
-	const img = '<img src="https://countryflagsapi.com/png/'+iso+'" class="flagInfo">'
+	const img = '<img src="'+flagURL(iso)+'" class="flagInfo">'
 	const popupContent = img + (getAdditionalInfo(selectedCountry) || "<p>Madagascar, where the passport is from.</p>")
 	const countryName =  getCountryDetailsFromISO(iso, "Country") || "Madagascar"
 
@@ -282,9 +293,13 @@ const handleVisaDetails = (e) => {
 
 }
 
+const flagURL = (countryISO) => {
+	return "https://flagsapi.com/"+countryISO+"/shiny/64.png"
+}
+
 const countriesInfos = (relatedCountries) => {
 	const infos = relatedCountries.map(e => {
-		const img = '<img src="https://countryflagsapi.com/png/'+e["Country code"]+'" class="flagInfo">'
+		const img = '<img src="'+flagURL(e["Country code"])+'" class="flagInfo">'
 		return '<div class="info">'+ img +  formatJson(e) + '</div>'
 	}).join('')
 
@@ -308,6 +323,7 @@ const mainThread = async () => {
 	controller = await addGlobe()
 	setLoading(false)
 
+	//console.log(controller)
 	controller.onCountryPicked(countryPickHandler);
 
 	//on nav detail => hide popup
